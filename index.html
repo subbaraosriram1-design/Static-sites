@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Static Web Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .container {
+      max-width: 700px;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      margin-bottom: 16px;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+    }
+    p {
+      margin: 0 auto 24px;
+      max-width: 520px;
+      line-height: 1.75;
+      font-size: 1.1rem;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #111827;
+      background: #fbbf24;
+      font-weight: 700;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+    a.button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+    footer {
+      margin-top: 32px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Your Sample Static Site</h1>
+    <p>This is a simple static HTML page you can use to host on a free platform. It works on GitHub Pages, Netlify, or any static host.</p>
+    <div class="button-group">
+      <a class="button" href="#features">Explore</a>
+      <a class="button" href="#host">Host Free</a>
+    </div>
+    <footer>
+      <p>Created for a quick static web page demo.</p>
+    </footer>
+  </div>
+</body>
+</html>
