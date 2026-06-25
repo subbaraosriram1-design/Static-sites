@@ -1,0 +1,497 @@
+# Power Apps Canvas Apps - Complete Interview Notes
+
+# 1. What is a Canvas App?
+
+A Canvas App is a low-code application where developers have full control over the User Interface (UI) using drag-and-drop controls and Power Fx formulas.
+
+Interview Answer:
+
+A Canvas App is a type of Power App that provides complete control over the application's user interface. It allows developers to design screens, place controls anywhere on the canvas, and connect to multiple data sources using Power Fx formulas.
+
+---
+
+# 2. Why Canvas Apps?
+
+Advantages:
+
+* Full UI customization
+* Supports responsive design
+* Connects to multiple data sources
+* Low-code development
+* Mobile and web support
+* Fast application development
+
+---
+
+# 3. Canvas App Architecture
+
+Typical Architecture:
+
+User
+↓
+Canvas App
+↓
+Power Fx
+↓
+Data Sources
+↓
+SharePoint / Dataverse / SQL / APIs
+
+---
+
+# 4. Components of Canvas Apps
+
+## A. Screens
+
+Screens are pages within the application.
+
+Examples:
+
+* Home Screen
+* Dashboard Screen
+* Create Screen
+* Edit Screen
+* Approval Screen
+
+Important Functions:
+
+```PowerFx id="h2f7r1"
+Navigate(Screen2)
+Back()
+```
+
+Interview Question:
+
+Q: What are Screens?
+
+Answer:
+Screens are containers that hold controls and represent different pages in a Canvas Application.
+
+---
+
+## B. Controls
+
+Controls are UI elements placed on screens.
+
+### Input Controls
+
+* Text Input
+* Combo Box
+* Dropdown
+* Date Picker
+* Radio Button
+* Toggle
+* Check Box
+
+### Display Controls
+
+* Label
+* Image
+* Icon
+* HTML Text
+
+### Action Controls
+
+* Button
+* Timer
+
+### Layout Controls
+
+* Container
+* Horizontal Container
+* Vertical Container
+
+### Data Controls
+
+* Gallery
+* Form
+* Data Table
+
+Interview Question:
+
+Q: What controls have you used?
+
+---
+
+# 5. Forms
+
+Forms are used for CRUD operations.
+
+## Edit Form
+
+Used to:
+
+* Create records
+* Edit records
+
+Functions:
+
+```PowerFx id="a7n5c9"
+NewForm(Form1)
+EditForm(Form1)
+SubmitForm(Form1)
+ResetForm(Form1)
+```
+
+## Display Form
+
+Used for read-only data display.
+
+Interview Question:
+
+Q: Difference between Edit Form and Display Form?
+
+---
+
+# 6. Gallery
+
+Gallery displays multiple records.
+
+Example:
+
+Employee List
+
+Gallery Functions:
+
+```PowerFx id="d4k8m2"
+Filter()
+Search()
+Sort()
+SortByColumns()
+```
+
+Interview Question:
+
+Q: Difference between Form and Gallery?
+
+| Form                   | Gallery                   |
+| ---------------------- | ------------------------- |
+| Displays single record | Displays multiple records |
+| Used for CRUD          | Used for listing records  |
+
+---
+
+# 7. Variables
+
+## Global Variables
+
+Accessible throughout the app.
+
+Syntax:
+
+```PowerFx id="g6p3x1"
+Set(varUser, User().FullName)
+```
+
+## Context Variables
+
+Accessible only within a screen.
+
+Syntax:
+
+```PowerFx id="v9q2n4"
+UpdateContext({showPopup:true})
+```
+
+## Collections
+
+Temporary in-memory tables.
+
+Syntax:
+
+```PowerFx id="m8r5t7"
+ClearCollect(
+    colEmployees,
+    EmployeeList
+)
+```
+
+Interview Question:
+
+Q: Difference between Variables and Collections?
+
+---
+
+# 8. Power Fx Functions
+
+## Data Functions
+
+```PowerFx id="p4l6s8"
+Filter()
+LookUp()
+Search()
+Distinct()
+First()
+Last()
+CountRows()
+```
+
+## Collection Functions
+
+```PowerFx id="c7w1e5"
+Collect()
+Clear()
+ClearCollect()
+Remove()
+RemoveIf()
+```
+
+## Logical Functions
+
+```PowerFx id="n2y8k3"
+If()
+Switch()
+IsBlank()
+IsEmpty()
+```
+
+## Text Functions
+
+```PowerFx id="t5u4z9"
+Concat()
+Split()
+Upper()
+Lower()
+Len()
+Trim()
+```
+
+## Date Functions
+
+```PowerFx id="r1j7f6"
+Today()
+Now()
+DateDiff()
+DateAdd()
+```
+
+Interview Question:
+
+Q: Which Power Fx functions have you used extensively?
+
+---
+
+# 9. CRUD Operations
+
+## Create
+
+```PowerFx id="k3x9b2"
+Patch(
+    EmployeeList,
+    Defaults(EmployeeList),
+    {
+        Name: txtName.Text
+    }
+)
+```
+
+## Read
+
+```PowerFx id="u8c4d7"
+Filter(EmployeeList, Status="Active")
+```
+
+## Update
+
+```PowerFx id="e6h2q5"
+Patch(
+    EmployeeList,
+    Gallery1.Selected,
+    {
+        Status:"Approved"
+    }
+)
+```
+
+## Delete
+
+```PowerFx id="w4m8p1"
+Remove(EmployeeList, Gallery1.Selected)
+```
+
+---
+
+# 10. Patch Function (Very Important)
+
+Patch is used to create or update records.
+
+Interview Question:
+
+Q: Why did you use Patch instead of SubmitForm?
+
+Answer:
+Patch provides greater flexibility for updating specific fields, working with multiple data sources, and implementing custom business logic.
+
+---
+
+# 11. Delegation (Most Important)
+
+Delegation means processing data at the data source instead of locally.
+
+Benefits:
+
+* Better performance
+* Handles large datasets
+
+Common Delegable Functions:
+
+* Filter
+* LookUp
+* Sort
+* StartsWith
+
+Interview Question:
+
+Q: What is Delegation?
+
+Answer:
+Delegation is the process of sending queries to the data source for processing rather than retrieving all records to the application.
+
+---
+
+# 12. Responsive Design
+
+Responsive Apps adapt to different screen sizes.
+
+Techniques:
+
+* Containers
+* Relative formulas
+* Parent.Width
+* Parent.Height
+
+Example:
+
+```PowerFx id="j5v3n8"
+Width = Parent.Width * 0.5
+```
+
+Interview Question:
+
+Q: How did you create responsive apps?
+
+---
+
+# 13. Role-Based Access
+
+Example:
+
+Admin View
+
+```PowerFx id="b8f6x2"
+If(
+    User().Email="admin@company.com",
+    true,
+    false
+)
+```
+
+Visibility Property:
+
+```PowerFx id="l7r4y1"
+Visible = varIsAdmin
+```
+
+---
+
+# 14. App Lifecycle Events
+
+## App OnStart
+
+Runs when application starts.
+
+Example:
+
+```PowerFx id="q9k2c5"
+Set(
+    varUser,
+    User()
+)
+```
+
+## Screen OnVisible
+
+Runs whenever screen opens.
+
+Example:
+
+```PowerFx id="s3w8m6"
+Refresh(EmployeeList)
+```
+
+Interview Question:
+
+Q: Difference between App OnStart and Screen OnVisible?
+
+---
+
+# 15. Monitor Tool
+
+Monitor is used for debugging.
+
+Used to:
+
+* Track API calls
+* Identify errors
+* Detect delegation issues
+* Analyze performance
+
+---
+
+# 16. Performance Optimization (Very Important)
+
+Techniques:
+
+* Use delegable queries.
+* Minimize collections.
+* Avoid nested galleries.
+* Use Concurrent().
+* Load only required columns.
+* Avoid unnecessary Refresh().
+* Use indexed SharePoint columns.
+* Use Monitor tool.
+
+Interview Question:
+
+Q: How do you improve Canvas App performance?
+
+---
+
+# 17. Connectors
+
+Types:
+
+### Standard Connectors
+
+* SharePoint
+* Outlook
+* Teams
+
+### Premium Connectors
+
+* SQL Server
+* Salesforce
+
+### Custom Connectors
+
+Used for external APIs.
+
+---
+
+# 18. Common Interview Questions
+
+1. What is a Canvas App?
+2. Why did you choose Canvas Apps?
+3. Explain your Canvas App architecture.
+4. Difference between Form and Gallery?
+5. Difference between Variables and Collections?
+6. What is Delegation?
+7. What is Patch?
+8. Patch vs SubmitForm?
+9. What are Collections?
+10. How do you implement role-based security?
+11. How do you improve app performance?
+12. What is Monitor?
+13. What is App OnStart?
+14. Difference between OnStart and OnVisible?
+15. Explain one Canvas App project end-to-end.

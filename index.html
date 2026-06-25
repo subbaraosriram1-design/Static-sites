@@ -260,6 +260,10 @@
         top: 20px;
         align-self: start;
       }
+
+      .sidebar.hidden {
+        display: block;
+      }
     }
 
     @media (max-width: 940px) {
@@ -315,7 +319,7 @@
     </div>
 
     <div class="layout">
-      <aside class="sidebar hidden" id="sidebar">
+      <aside class="sidebar" id="sidebar">
         <button id="closeFiles" class="close-button" type="button" aria-label="Close files">×</button>
         <h1>Q&A Files</h1>
         <p class="intro">Pick a text file to view. Headings beginning with <strong>#</strong> become collapsible
@@ -354,6 +358,20 @@
       toggleFiles.setAttribute('aria-label', 'Hide files panel');
       toggleFiles.title = 'Hide files panel';
     }
+
+    function updateSidebarState() {
+      if (window.innerWidth <= 940) {
+        hideSidebar();
+      } else {
+        showSidebar();
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 940) {
+        showSidebar();
+      }
+    });
 
     function hideSidebar() {
       sidebar.classList.add('hidden');
@@ -491,6 +509,7 @@
     });
 
     loadFileList();
+    updateSidebarState();
   </script>
 </body>
 

@@ -1,0 +1,586 @@
+# Power Automate Cloud Flows - Complete Interview Notes
+
+# 1. What is Power Automate?
+
+Power Automate is a low-code automation platform used to automate business processes, integrate applications, and reduce manual work.
+
+Interview Answer:
+
+Power Automate is a cloud-based service that enables users to automate repetitive business processes across multiple applications and services using triggers and actions.
+
+---
+
+# 2. What is a Cloud Flow?
+
+A Cloud Flow is an automated workflow that runs in the cloud and performs actions based on triggers.
+
+Example:
+
+Employee submits leave request
+↓
+Manager receives approval email
+↓
+Manager approves
+↓
+Employee receives notification
+
+Interview Answer:
+
+Cloud Flows are automated workflows that run in Microsoft's cloud environment and automate business processes by connecting various applications and services.
+
+---
+
+# 3. Types of Cloud Flows
+
+## A. Automated Cloud Flow
+
+Runs automatically when an event occurs.
+
+Examples:
+
+* When a SharePoint item is created
+* When an email arrives
+* When a file is uploaded
+
+Example:
+
+New SharePoint Item Created
+↓
+Send Email Notification
+
+Interview Question:
+
+Q: What is an Automated Cloud Flow?
+
+Answer:
+An Automated Cloud Flow starts automatically when a specified event occurs.
+
+---
+
+## B. Instant Cloud Flow
+
+Runs manually by a user.
+
+Triggers:
+
+* Button click
+* Power Apps trigger
+* Manual trigger
+
+Examples:
+
+* User clicks Submit button in Power Apps.
+* User manually starts a process.
+
+Interview Question:
+
+Q: What is an Instant Cloud Flow?
+
+Answer:
+An Instant Cloud Flow runs on-demand when initiated manually by a user or another application such as Power Apps.
+
+---
+
+## C. Scheduled Cloud Flow
+
+Runs at predefined intervals.
+
+Examples:
+
+* Daily reports
+* Weekly reminders
+* Monthly cleanup jobs
+
+Example:
+
+Every day at 8 AM
+↓
+Generate Report
+↓
+Send Email
+
+Interview Question:
+
+Q: What is a Scheduled Cloud Flow?
+
+Answer:
+A Scheduled Cloud Flow executes automatically based on a defined schedule.
+
+---
+
+# 4. Components of a Cloud Flow
+
+Every flow consists of:
+
+## Trigger
+
+The event that starts the flow.
+
+Examples:
+
+* When an item is created
+* Power Apps trigger
+* Recurrence trigger
+
+## Actions
+
+Tasks performed after the trigger.
+
+Examples:
+
+* Create Item
+* Send Email
+* Update Record
+
+Flow Structure:
+
+Trigger
+↓
+Action 1
+↓
+Action 2
+↓
+Action 3
+
+---
+
+# 5. Common Triggers
+
+## SharePoint
+
+* When an item is created
+* When an item is modified
+* When a file is created
+
+## Outlook
+
+* When an email arrives
+
+## Dataverse
+
+* When a row is added
+* When a row is modified
+
+## Power Apps
+
+* Power Apps V2 Trigger
+
+## Schedule
+
+* Recurrence
+
+Interview Question:
+
+Q: Which triggers have you used?
+
+---
+
+# 6. Common Actions
+
+### SharePoint Actions
+
+* Create Item
+* Get Item
+* Get Items
+* Update Item
+* Delete Item
+
+### Dataverse Actions
+
+* Add Row
+* Update Row
+* List Rows
+* Delete Row
+
+### Outlook Actions
+
+* Send Email
+* Get Email
+
+### Teams Actions
+
+* Post Message
+
+---
+
+# 7. Variables
+
+Types:
+
+### String
+
+```text
+Initialize Variable
+Type = String
+```
+
+### Integer
+
+```text
+Type = Integer
+```
+
+### Boolean
+
+```text
+Type = Boolean
+```
+
+### Array
+
+```text
+Type = Array
+```
+
+### Object
+
+```text
+Type = Object
+```
+
+Common Actions:
+
+* Initialize Variable
+* Set Variable
+* Append to Array Variable
+
+Interview Question:
+
+Q: Why do we use variables?
+
+Answer:
+Variables are used to temporarily store values during flow execution.
+
+---
+
+# 8. Conditions
+
+Used to implement decision-making.
+
+Example:
+
+If Status = Approved
+
+Send Email
+
+Else
+
+Reject Request
+
+Interview Question:
+
+Q: What is a Condition action?
+
+---
+
+# 9. Switch Action
+
+Used when multiple conditions exist.
+
+Example:
+
+Status
+
+* New
+* Approved
+* Rejected
+* Cancelled
+
+Switch improves readability and performance.
+
+---
+
+# 10. Loops
+
+## Apply to Each
+
+Iterates through multiple records.
+
+Example:
+
+Get Items
+↓
+Apply to Each
+↓
+Send Email
+
+Interview Question:
+
+Q: When do you use Apply to Each?
+
+---
+
+## Do Until
+
+Runs until a condition becomes true.
+
+Example:
+
+Check Approval Status
+Until Approved
+
+---
+
+# 11. Expressions (Very Important)
+
+Examples:
+
+```text
+concat()
+substring()
+replace()
+length()
+empty()
+if()
+equals()
+contains()
+coalesce()
+formatDateTime()
+utcNow()
+guid()
+```
+
+Interview Question:
+
+Q: Which expressions have you used?
+
+---
+
+# 12. Parallel Branching
+
+Allows multiple actions to execute simultaneously.
+
+Benefits:
+
+* Improves performance
+* Reduces execution time
+
+Example:
+
+Trigger
+↓
+Parallel Branch
+
+Send Email     Update Record
+
+---
+
+# 13. Scopes
+
+Scopes group actions logically.
+
+Common Pattern:
+
+### Try Scope
+
+Main processing
+
+### Catch Scope
+
+Error handling
+
+### Finally Scope
+
+Cleanup activities
+
+Interview Question:
+
+Q: Why do you use Scopes?
+
+---
+
+# 14. Error Handling (Very Important)
+
+Techniques:
+
+## Configure Run After
+
+Can execute actions after:
+
+* Success
+* Failure
+* Timeout
+* Skipped
+
+Example:
+
+Try Scope
+↓
+Catch Scope (runs if Try fails)
+
+---
+
+## Exception Handling Pattern
+
+Try
+↓
+Catch
+↓
+Finally
+
+Interview Question:
+
+Q: How do you handle errors in Power Automate?
+
+Answer:
+I use Scope actions combined with Configure Run After settings to implement Try-Catch-Finally error handling. I also log errors and send failure notifications.
+
+---
+
+# 15. Approvals
+
+Common Approval Types:
+
+* Approve/Reject - First Response
+* Everyone Must Approve
+
+Example:
+
+Employee Request
+↓
+Manager Approval
+↓
+HR Approval
+
+Interview Question:
+
+Q: Have you implemented approval workflows?
+
+---
+
+# 16. Connectors
+
+## Standard Connectors
+
+* SharePoint
+* Outlook
+* Teams
+* OneDrive
+
+## Premium Connectors
+
+* SQL Server
+* Salesforce
+* Oracle
+
+## Custom Connectors
+
+Used for external APIs.
+
+---
+
+# 17. Child Flows
+
+A Child Flow is a reusable flow called by another flow.
+
+Benefits:
+
+* Reusability
+* Easier maintenance
+
+Interview Question:
+
+Q: What are Child Flows?
+
+Answer:
+Child Flows are reusable flows that can be invoked from parent flows to modularize business logic.
+
+---
+
+# 18. HTTP Actions
+
+Very Important for experienced candidates.
+
+Common Actions:
+
+### HTTP
+
+Call external REST APIs.
+
+### HTTP Request Trigger
+
+Expose flow as an API.
+
+Interview Question:
+
+Q: Have you used HTTP actions?
+
+Example:
+Power Apps → Flow → External HR API → Response to Power Apps
+
+---
+
+# 19. Concurrency Control
+
+Controls parallel execution.
+
+Used mainly in:
+
+* Apply to Each loops
+
+Benefits:
+
+* Improves performance
+* Prevents race conditions
+
+Interview Question:
+
+Q: What is concurrency control?
+
+---
+
+# 20. Flow Monitoring and Debugging
+
+Techniques:
+
+* Run History
+* Peek Code
+* Compose action
+* Monitor outputs
+* Configure Run After
+
+Interview Question:
+
+Q: How do you debug flows?
+
+Answer:
+I use Run History, action outputs, Compose actions, and error details to identify and troubleshoot issues.
+
+---
+
+# 21. Solutions and ALM
+
+Flows should be created inside Solutions.
+
+Benefits:
+
+* Deployment support
+* Environment variables
+* Connection references
+* ALM support
+
+---
+
+# 22. Common Interview Questions
+
+1. What is Power Automate?
+2. What are Cloud Flows?
+3. What are the types of Cloud Flows?
+4. Difference between Automated, Instant, and Scheduled Flows?
+5. What triggers have you used?
+6. Explain one flow end-to-end.
+7. What is Apply to Each?
+8. What is Do Until?
+9. What are Expressions?
+10. How do you handle errors?
+11. What is Configure Run After?
+12. What are Child Flows?
+13. What is Concurrency Control?
+14. What are HTTP actions?
+15. How do you debug flows?
+16. What are Approval Flows?
+17. What are Scopes?
+18. Explain Try-Catch-Finally implementation.
+19. What are Connection References?
+20. Explain one real-time business use case.
+

@@ -39,7 +39,7 @@ Everything in Model-Driven Apps revolves around Dataverse.
 
 # 4. Main Components of Model-Driven Apps
 
-## A. Tables
+Tables
 
 Tables store business data.
 
@@ -54,7 +54,7 @@ Tables are mandatory in Model-Driven Apps.
 
 ---
 
-## B. Columns
+Columns
 
 Columns store data within tables.
 
@@ -77,21 +77,21 @@ Common Column Types:
 
 ---
 
-## C. Relationships
+# Relationships
 
 Relationships connect tables.
 
 Types:
 
-### One-to-Many (1:N)
+One-to-Many (1:N)
 
 One Department → Many Employees
 
-### Many-to-One (N:1)
+Many-to-One (N:1)
 
 Many Employees → One Department
 
-### Many-to-Many (N:N)
+Many-to-Many (N:N)
 
 Many Students ↔ Many Courses
 
@@ -101,25 +101,25 @@ Q: What relationships are supported in Dataverse?
 
 ---
 
-## D. Forms
+# Forms
 
 Forms provide the UI for creating and editing records.
 
 Types:
 
-### Main Form
+ Main Form
 
 Primary form used for data entry.
 
-### Quick Create Form
+ Quick Create Form
 
 Used to create records quickly.
 
-### Quick View Form
+Quick View Form
 
 Displays related record information.
 
-### Card Form
+ Card Form
 
 Used in dashboards and interactive experiences.
 
@@ -129,7 +129,7 @@ Q: What are the different types of forms?
 
 ---
 
-## E. Views
+# Views
 
 Views display records.
 
@@ -141,21 +141,21 @@ Examples:
 
 Types:
 
-### System View
+ System View
 
 Visible to all users.
 
-### Personal View
+ Personal View
 
 Created by individual users.
 
 Interview Question:
 
-Q: Difference between System Views and Personal Views?
+Difference between System Views and Personal Views?
 
 ---
 
-## F. Charts
+# Charts
 
 Used to visualize table data.
 
@@ -167,7 +167,7 @@ Examples:
 
 ---
 
-## G. Dashboards
+# Dashboards
 
 Dashboards display business data visually.
 
@@ -189,7 +189,7 @@ Q: What is a Dashboard in Model-Driven Apps?
 
 ---
 
-# 5. Business Process Flow (BPF)
+# Business Process Flow (BPF)
 
 Business Process Flow guides users through predefined stages.
 
@@ -224,7 +224,7 @@ Business Process Flow guides users through a series of business stages to ensure
 
 ---
 
-# 6. Business Rules
+#  Business Rules
 
 Business Rules apply validations without coding.
 
@@ -247,7 +247,7 @@ Q: What are Business Rules?
 
 ---
 
-# 7. Security Roles
+#  Security Roles
 
 Security controls user access.
 
@@ -275,7 +275,7 @@ Q: How is security implemented in Model-Driven Apps?
 
 ---
 
-# 8. Command Bar
+#  Command Bar
 
 Command Bar contains action buttons.
 
@@ -290,7 +290,7 @@ Can be customized.
 
 ---
 
-# 9. Site Map
+#  Site Map
 
 Site Map defines navigation.
 
@@ -316,7 +316,7 @@ A Site Map defines the navigation structure of a Model-Driven Application.
 
 ---
 
-# 10. Solution Components
+#  Solution Components
 
 Model-Driven Apps are usually developed within Solutions.
 
@@ -332,7 +332,7 @@ Solution Components:
 
 ---
 
-# 11. Plugins and JavaScript
+#  Plugins and JavaScript
 
 Advanced customizations can be implemented using:
 
@@ -348,7 +348,7 @@ Examples:
 
 ---
 
-# 12. Canvas App vs Model-Driven App
+#  Canvas App vs Model-Driven App
 
 | Feature     | Canvas App           | Model-Driven App    |
 | ----------- | -------------------- | ------------------- |
@@ -368,7 +368,7 @@ I would choose a Model-Driven App when the application requires complex relation
 
 ---
 
-# 13. Common Interview Questions
+#  Common Interview Questions
 
 1. What is a Model-Driven App?
 2. How is a Model-Driven App different from a Canvas App?

@@ -1,0 +1,388 @@
+# Power Pages - Complete Interview Notes
+
+# 1. What is Power Pages?
+
+Power Pages is a low-code platform used to create secure, external-facing websites that allow users outside the organization to interact with business data stored in Dataverse.
+
+Examples:
+
+* Customer Portal
+* Vendor Portal
+* Citizen Services Portal
+* Employee Self-Service Portal
+
+Interview Answer:
+
+Power Pages is a low-code SaaS platform in Microsoft Power Platform that enables organizations to build secure, external-facing business websites integrated with Dataverse.
+
+---
+
+# 2. Why Use Power Pages?
+
+Advantages:
+
+* Build websites quickly.
+* External users can access data.
+* Secure authentication and authorization.
+* Seamless integration with Dataverse.
+* Responsive design.
+* Integration with Power Automate and Power BI.
+
+---
+
+# 3. Typical Architecture
+
+External User
+↓
+Power Pages Website
+↓
+Dataverse
+↓
+Power Automate / Power BI / APIs
+
+Everything in Power Pages is primarily built on Dataverse.
+
+---
+
+# 4. Main Components of Power Pages
+
+## A. Website
+
+The complete portal application.
+
+Examples:
+
+* Customer Portal
+* Supplier Portal
+
+A website contains:
+
+* Web Pages
+* Navigation
+* Forms
+* Lists
+* Authentication
+
+---
+
+## B. Web Pages
+
+Web Pages represent pages within the portal.
+
+Examples:
+
+* Home Page
+* Contact Us
+* Product Page
+* Dashboard Page
+
+Properties:
+
+* Name
+* URL
+* Parent Page
+* Permissions
+
+---
+
+## C. Page Templates
+
+Templates define the layout and structure of pages.
+
+Examples:
+
+* Home Template
+* Landing Page Template
+
+---
+
+## D. Web Templates
+
+Reusable HTML/Liquid templates.
+
+Used for:
+
+* Dynamic page rendering
+* Custom layouts
+
+Technologies Used:
+
+* HTML
+* CSS
+* JavaScript
+* Liquid
+
+Interview Question:
+
+Q: What is a Web Template?
+
+Answer:
+A Web Template is a reusable HTML and Liquid-based template used to define page layouts and dynamically render content in Power Pages.
+
+---
+
+# 5. Dataverse Integration
+
+Dataverse is the primary data source for Power Pages.
+
+Examples:
+
+* Customer Table
+* Service Request Table
+* Product Table
+
+External users can:
+
+* Create records
+* View records
+* Update records
+
+---
+
+# 6. Forms in Power Pages
+
+Forms allow users to create or edit Dataverse records.
+
+Types:
+
+### Basic Form
+
+Displays a Dataverse form on the website.
+
+Example:
+
+Customer Registration Form
+
+### Multi-Step Form
+
+Used for wizard-like processes.
+
+Example:
+
+Loan Application Process
+
+Step 1 → Personal Details
+Step 2 → Address
+Step 3 → Documents
+Step 4 → Review
+
+Interview Question:
+
+Q: Difference between Basic Form and Multi-Step Form?
+
+---
+
+# 7. Lists
+
+Lists display Dataverse records on the website.
+
+Features:
+
+* Search
+* Sorting
+* Pagination
+* Filtering
+
+Example:
+
+Customer Service Requests
+
+---
+
+# 8. Authentication
+
+Power Pages supports multiple authentication providers.
+
+Examples:
+
+* Local Login
+* Microsoft Entra ID (Azure AD)
+* Google
+* LinkedIn
+* Facebook
+
+Interview Question:
+
+Q: What authentication methods are supported in Power Pages?
+
+---
+
+# 9. Authorization (Very Important)
+
+Authorization controls what users can access.
+
+Power Pages uses:
+
+## Web Roles
+
+Examples:
+
+* Customer
+* Vendor
+* Administrator
+
+## Table Permissions
+
+Control record-level access.
+
+Permissions:
+
+* Create
+* Read
+* Write
+* Delete
+* Append
+* Append To
+
+Interview Question:
+
+Q: How is security implemented in Power Pages?
+
+Answer:
+Security in Power Pages is implemented using Web Roles and Table Permissions, which control access to Dataverse records.
+
+---
+
+# 10. Web Roles
+
+Web Roles define portal user permissions.
+
+Examples:
+
+* Anonymous Users
+* Authenticated Users
+* Customer Users
+* Admin Users
+
+Example:
+
+Customers can view only their own requests.
+
+---
+
+# 11. Table Permissions
+
+Controls access to Dataverse tables.
+
+Scopes:
+
+### Global
+
+Access to all records.
+
+### Contact
+
+Access only to records related to logged-in user.
+
+### Account
+
+Access to records related to user's account.
+
+### Self
+
+Access only to own records.
+
+Interview Question:
+
+Q: What are Table Permissions?
+
+Answer:
+Table Permissions define CRUD access to Dataverse records within Power Pages.
+
+---
+
+# 12. Liquid Templates
+
+Liquid is a server-side templating language.
+
+Used to:
+
+* Display dynamic data.
+* Build custom pages.
+
+Example:
+
+Display Logged-in User Name.
+
+Technologies commonly used:
+
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Liquid
+
+---
+
+# 13. Power Automate Integration
+
+Common Scenarios:
+
+* Send email notifications.
+* Approval workflows.
+* Create records.
+* Update records.
+
+Example:
+
+Customer submits service request
+↓
+Power Automate triggers
+↓
+Manager receives notification
+
+---
+
+# 14. Customizations
+
+Power Pages supports:
+
+* Custom CSS
+* JavaScript
+* Bootstrap
+* Liquid Templates
+
+Used for:
+
+* UI enhancements
+* Validation
+* Custom functionality
+
+---
+
+# 15. Canvas Apps vs Power Pages
+
+| Feature        | Canvas Apps         | Power Pages         |
+| -------------- | ------------------- | ------------------- |
+| Users          | Internal users      | External users      |
+| Access         | Employees           | Customers/Vendors   |
+| Authentication | Microsoft 365 users | External identities |
+| Data Source    | Multiple            | Primarily Dataverse |
+| Deployment     | Mobile/Web App      | Website             |
+
+Interview Question:
+
+Q: When would you choose Power Pages?
+
+Answer:
+Power Pages is preferred when external users such as customers, vendors, or partners need secure access to business data through a web portal.
+
+---
+
+# 16. Common Interview Questions
+
+1. What is Power Pages?
+2. Why use Power Pages?
+3. What are Web Roles?
+4. What are Table Permissions?
+5. How is security implemented?
+6. What authentication providers are supported?
+7. What are Basic Forms and Multi-Step Forms?
+8. What are Web Templates?
+9. What is Liquid?
+10. Explain Power Pages architecture.
+11. Difference between Canvas Apps and Power Pages?
+12. What technologies are used in Power Pages?
+13. How does Power Pages interact with Dataverse?
+14. How do external users access data securely?
+15. Explain a Power Pages use case.

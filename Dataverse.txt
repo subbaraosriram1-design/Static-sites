@@ -1,0 +1,500 @@
+# Microsoft Dataverse for Power Apps – Important Concepts
+
+## 1. What is Dataverse?
+
+Microsoft Dataverse is a secure, cloud-based data platform used to store and manage business data for Power Platform applications.
+
+Interview Answer:
+
+Dataverse is a cloud-based relational database provided by Microsoft that allows us to securely store, manage, and model business data for Power Apps, Power Automate, Power BI, and other Microsoft services.
+
+---
+
+## 2. Why Use Dataverse?
+
+Advantages:
+
+* Secure and scalable
+* Supports relational data
+* Role-based security
+* Business rules support
+* Audit history
+* Better performance than SharePoint for large applications
+* Native integration with Power Platform
+
+---
+
+## 3. Dataverse Components
+
+### Tables
+
+Tables store business data.
+
+Examples:
+
+* Employee Table
+* Customer Table
+* Request Table
+
+Equivalent in databases:
+
+Table = Database Table
+
+---
+
+### Rows
+
+Rows represent records.
+
+Example:
+
+| Employee ID | Name   | Department |
+| ----------- | ------ | ---------- |
+| 1001        | Venkat | IT         |
+
+---
+
+### Columns
+
+Columns store attributes.
+
+Examples:
+
+* Name
+* Email
+* Status
+* Department
+
+---
+
+## 4. Types of Columns
+
+### Single Line of Text
+
+Stores short text.
+
+Example:
+
+Employee Name
+
+---
+
+### Multiple Lines of Text
+
+Stores long text.
+
+Example:
+
+Comments
+
+---
+
+### Choice
+
+Stores predefined values.
+
+Example:
+
+Status:
+
+* New
+* Approved
+* Rejected
+
+---
+
+### Yes/No
+
+Stores Boolean values.
+
+---
+
+### Number
+
+Stores numeric values.
+
+---
+
+### Currency
+
+Stores monetary values.
+
+---
+
+### Date and Time
+
+Stores dates.
+
+---
+
+### Lookup
+
+Creates relationships between tables.
+
+Example:
+
+Employee → Department
+
+---
+
+### File
+
+Stores files.
+
+---
+
+### Image
+
+Stores images.
+
+---
+
+### Autonumber
+
+Automatically generates IDs.
+
+Example:
+
+REQ-0001
+
+---
+
+## 5. Types of Tables
+
+### Standard Tables
+
+Provided by Microsoft.
+
+Examples:
+
+* Account
+* Contact
+* User
+
+---
+
+### Custom Tables
+
+Created by developers.
+
+Example:
+
+Employee Requests
+
+---
+
+### Activity Tables
+
+Track activities.
+
+Examples:
+
+* Emails
+* Appointments
+* Tasks
+
+---
+
+## 6. Relationships (Very Important)
+
+### One-to-Many (1:N)
+
+One Department can have many Employees.
+
+Department
+|
+|------ Employee1
+|------ Employee2
+
+Example:
+
+One Department → Many Employees
+
+---
+
+### Many-to-One (N:1)
+
+Many Employees belong to one Department.
+
+---
+
+### Many-to-Many (N:N)
+
+One Student can enroll in many Courses.
+
+One Course can have many Students.
+
+---
+
+Interview Question:
+
+Q: What types of relationships are available in Dataverse?
+
+Answer:
+Dataverse supports One-to-Many, Many-to-One, and Many-to-Many relationships.
+
+---
+
+## 7. Primary Key
+
+Every table contains a unique identifier.
+
+Example:
+
+EmployeeId
+
+Used internally by Dataverse.
+
+---
+
+## 8. Alternate Key
+
+Used to uniquely identify records using business values.
+
+Example:
+
+Employee Number
+
+Benefits:
+
+* Prevent duplicates
+* Support integrations
+
+Interview Question:
+
+Q: What is an Alternate Key?
+
+Answer:
+Alternate Key is a business-specific unique identifier used to uniquely identify records apart from the primary key.
+
+---
+
+## 9. Business Rules
+
+Business Rules enforce validations without code.
+
+Example:
+
+If Salary > 100000
+Set Approval Required = Yes
+
+Benefits:
+
+* No coding required
+* Reusable
+* Server-side validation
+
+Interview Question:
+
+Q: What are Business Rules?
+
+Answer:
+Business Rules are no-code validation mechanisms used to enforce business logic on Dataverse tables.
+
+---
+
+## 10. Calculated Columns
+
+Values are automatically calculated.
+
+Example:
+
+Total Amount = Quantity × Price
+
+---
+
+## 11. Rollup Columns
+
+Aggregate data from related tables.
+
+Example:
+
+Total Orders of Customer
+
+---
+
+## 12. Security Roles (Very Important)
+
+Dataverse provides role-based security.
+
+Privileges:
+
+* Create
+* Read
+* Write
+* Delete
+* Append
+* Append To
+* Assign
+* Share
+
+Access Levels:
+
+### User
+
+Only own records.
+
+### Business Unit
+
+Records within business unit.
+
+### Parent Child Business Unit
+
+### Organization
+
+Entire organization.
+
+Interview Question:
+
+Q: What are Security Roles?
+
+Answer:
+Security Roles control user access to Dataverse tables and records based on privileges and access levels.
+
+---
+
+## 13. Business Units
+
+Business Units help organize users and security.
+
+Example:
+
+Organization
+├── HR BU
+├── Finance BU
+└── IT BU
+
+---
+
+## 14. Auditing
+
+Tracks record changes.
+
+Example:
+
+Who changed:
+
+* Status
+* Amount
+* Owner
+
+Interview Question:
+
+Q: What is auditing in Dataverse?
+
+Answer:
+Auditing tracks data changes and records who modified the data and when.
+
+---
+
+## 15. Views
+
+Views display filtered data.
+
+Examples:
+
+* Active Employees
+* My Requests
+* Approved Requests
+
+Types:
+
+* Public View
+* Personal View
+
+---
+
+## 16. Forms
+
+Forms provide user interfaces for data entry.
+
+Types:
+
+* Main Form
+* Quick Create Form
+* Quick View Form
+* Card Form
+
+---
+
+## 17. Charts
+
+Visual representation of table data.
+
+Examples:
+
+* Pie Chart
+* Bar Chart
+* Funnel Chart
+
+---
+
+## 18. Dataverse vs SharePoint
+
+| Feature        | Dataverse       | SharePoint          |
+| -------------- | --------------- | ------------------- |
+| Purpose        | Relational data | Document management |
+| Relationships  | Strong          | Limited             |
+| Security       | Advanced        | Basic               |
+| Performance    | High            | Medium              |
+| Large Data     | Excellent       | Limited             |
+| Business Rules | Available       | Not available       |
+| Audit          | Built-in        | Limited             |
+
+---
+
+## 19. Integration with Power Apps
+
+Common Functions:
+
+Create Record:
+
+```PowerFx
+Patch(
+    Employees,
+    Defaults(Employees),
+    {
+        Name:"Venkat"
+    }
+)
+```
+
+Update Record:
+
+```PowerFx
+Patch(
+    Employees,
+    Gallery1.Selected,
+    {
+        Status:"Approved"
+    }
+)
+```
+
+Retrieve Records:
+
+```PowerFx
+Filter(Employees, Status="Active")
+```
+
+---
+
+## 20. Common Interview Questions
+
+1. What is Dataverse?
+2. Why did you use Dataverse?
+3. Dataverse vs SharePoint?
+4. What are tables and columns?
+5. What are relationships?
+6. Explain Security Roles.
+7. What are Business Rules?
+8. What are Alternate Keys?
+9. What are Calculated and Rollup Columns?
+10. What is auditing?
+11. What are Business Units?
+12. How do you secure Dataverse data?
+13. What are standard and custom tables?
+14. Explain one Dataverse implementation in your project.
+15. Why would you choose Dataverse over SharePoint?
+
+These are the most important Dataverse topics for Power Apps interviews.

@@ -1,0 +1,215 @@
+Sharepoint 
+
+What is the difference between SharePoint 2013 and SharePoint Online?
+
+SharePoint 2013	SharePoint Online
+Installed on company's servers	Hosted in Microsoft Cloud
+Company manages infrastructure	Microsoft manages infrastructure
+Requires maintenance	Automatic updates
+Limited scalability	Highly scalable
+Upgrade cost required	Included in Microsoft 365
+
+
+What is ShareGate?
+ShareGate is a migration and management tool used to migrate SharePoint sites, lists, libraries, permissions, metadata,
+ and Microsoft 365 content to SharePoint Online with minimal manual effort.
+ 
+What can be migrated using ShareGate?
+
+You can migrate:
+
+Sites
+Site Collections
+Lists
+Libraries
+Documents
+Metadata
+Content Types
+Permissions
+Workflows (partially)
+Pages
+Teams
+OneDrive
+
+
+Pre-Migration Report
+
+Generated before migration.
+
+Purpose:
+
+Identify issues.
+Check unsupported features.
+Estimate migration effort.
+
+Example findings:
+
+Large files.
+Unsupported workflows.
+Custom solutions.
+Broken permissions.
+Migration Report
+
+Generated after migration.
+
+Purpose:
+
+Verify migration success.
+Inventory Report
+
+Lists:
+
+Sites
+Libraries
+Permissions
+Storage usage
+SharePoint 2013 to SharePoint Online Migration
+
+Step 1: Assessment Phase
+
+First, analyze the source environment.
+
+Questions:
+
+How many sites exist?
+How much data exists?
+What customizations are present?
+Are workflows used?
+Any InfoPath forms?
+Any third-party solutions?
+
+Tools:
+
+ShareGate Assessment
+SharePoint Inventory
+
+Step 2: Identify Objects
+
+Identify:
+
+Site Collections
+Sites
+Lists
+Libraries
+Documents
+Workflows
+Permissions
+Content Types
+Step 3: Clean Up Source Environment
+
+Remove:
+
+❌ Duplicate files
+
+❌ Old sites
+
+❌ Unused libraries
+
+❌ Obsolete workflows
+
+❌ Unused users
+
+This reduces migration effort.
+
+Step 4: Analyze Customizations
+
+Very important.
+Check:
+
+Custom Master Pages
+
+SharePoint Online may not support them.
+
+Farm Solutions (.wsp)
+
+Need redesign.
+
+Sandbox Solutions
+
+Need validation.
+
+InfoPath Forms
+
+May need Power Apps replacement.
+
+SharePoint Designer Workflows
+
+Need migration to Power Automate.
+
+Things to take care of during migration
+A. Permissions
+
+Check:
+
+Site permissions
+Library permissions
+Unique permissions
+
+Questions:
+
+Will permissions migrate?
+
+Will AD groups exist in Microsoft 365?
+
+B. Metadata
+
+Ensure migration of:
+
+Created By
+Modified By
+Created Date
+Modified Date
+Custom Columns
+C. Document Versions
+
+Decide:
+
+Should all document versions migrate?
+
+Example:
+
+A document has 100 versions.
+
+Migrating all versions increases migration time.
+
+D. Large Files
+
+SharePoint Online supports large files but check organizational limits.
+
+E. Unsupported Features
+
+Examples:
+
+Feature	Action
+InfoPath	Replace
+SPD Workflow	Replace
+Farm Solutions	Redevelop
+Custom Web Parts	Rebuild
+F. URL Length
+
+Very long URLs may fail.
+
+Example:
+
+https://company.sharepoint.com/sites/project/documentlibrary/folder1/folder2/folder3/folder4/file.docx
+G. Special Characters
+
+Invalid characters:
+
+" * : < > ? / \ |
+
+Must be fixed before migration.
+
+H. User Mapping
+
+Example:
+
+Old User:
+
+DOMAIN\venkat
+
+New User:
+
+venkat@company.com
+
+Need mapping.

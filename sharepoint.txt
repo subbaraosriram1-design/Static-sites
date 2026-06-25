@@ -1,0 +1,636 @@
+SharePoint
+
+# SharePoint Core Components
+
+## 1. SharePoint Site
+
+A SharePoint Site is a web-based workspace used to store, organize, share, and manage information and documents.
+
+Examples:
+
+* HR Site
+* Finance Site
+* IT Site
+* Project Site
+
+A site contains:
+
+* Pages
+* Lists
+* Libraries
+* Permissions
+* Web Parts
+
+Interview Question:
+Q: What is a SharePoint Site?
+
+Answer:
+A SharePoint Site is a collaborative workspace where users can store documents, manage data, share information, and collaborate with team members.
+
+---
+
+## 2. Types of SharePoint Sites
+
+### Team Site
+
+Used for collaboration among team members.
+
+Features:
+
+* Shared documents
+* Task management
+* Team discussions
+* Microsoft Teams integration
+
+Example:
+Development Team Site
+
+### Communication Site
+
+Used for broadcasting information to a large audience.
+
+Features:
+
+* News
+* Announcements
+* Company updates
+
+Example:
+Corporate HR Portal
+
+Interview Question:
+Q: Difference between Team Site and Communication Site?
+
+| Team Site                        | Communication Site          |
+| -------------------------------- | --------------------------- |
+| Collaboration                    | Information sharing         |
+| Many contributors                | Few contributors            |
+| Team-focused                     | Organization-focused        |
+| Connected to Microsoft 365 Group | Usually not group-connected |
+
+---
+
+## 3. Site Collection
+
+A Site Collection is a group of SharePoint sites that share common settings, permissions, and administration.
+
+Example:
+
+Company Portal (Site Collection)
+├── HR Site
+├── Finance Site
+└── IT Site
+
+Interview Question:
+Q: What is a Site Collection?
+
+Answer:
+A Site Collection is a collection of SharePoint sites managed under a single top-level site and administration boundary.
+
+---
+
+## 4. Subsite
+
+A subsite is a site created under another site.
+
+Example:
+
+HR Site
+├── Recruitment Subsite
+├── Payroll Subsite
+└── Training Subsite
+
+Note:
+Modern SharePoint Online recommends using separate sites instead of subsites.
+
+---
+
+## 5. SharePoint Page
+
+A Page is used to display information to users.
+
+Examples:
+
+* Home Page
+* Dashboard Page
+* News Page
+
+Pages can contain:
+
+* Text
+* Images
+* Videos
+* Lists
+* Libraries
+* Web Parts
+
+Interview Question:
+Q: What is a SharePoint Page?
+
+Answer:
+A SharePoint Page is a web page within a SharePoint site used to present content, information, and interactive components to users.
+
+---
+
+## 6. Types of Pages
+
+### Site Page
+
+Modern page used in SharePoint Online.
+
+Examples:
+
+* Home Page
+* News Page
+
+### Wiki Page
+
+Used mainly in older SharePoint versions for collaborative content editing.
+
+### Web Part Page
+
+Contains multiple web parts arranged in zones.
+
+---
+
+## 7. Web Parts
+
+Web Parts are reusable components added to SharePoint pages.
+
+Common Web Parts:
+
+* Text
+* Image
+* Document Library
+* List
+* News
+* Quick Links
+* Hero
+* Embed
+* Power BI
+* Power Apps
+
+Interview Question:
+Q: What are Web Parts?
+
+Answer:
+Web Parts are reusable UI components that can be added to SharePoint pages to display content and functionality.
+
+---
+
+## 8. SharePoint List
+
+A SharePoint List is similar to a database table used to store structured data.
+
+Examples:
+
+* Employee List
+* Leave Requests
+* Customer Requests
+
+A List contains:
+
+* Columns
+* Items
+* Views
+
+Example:
+
+| Employee ID | Name   | Department |
+| ----------- | ------ | ---------- |
+| 1001        | Venkat | IT         |
+
+---
+
+## 9. SharePoint Library
+
+A Library is used to store files and documents.
+
+Examples:
+
+* Documents
+* Images
+* Policies
+* PDFs
+
+Features:
+
+* Versioning
+* Check-In/Check-Out
+* Metadata
+* Permissions
+
+Interview Question:
+Q: Difference between List and Library?
+
+| List                      | Library                 |
+| ------------------------- | ----------------------- |
+| Stores structured data    | Stores files/documents  |
+| Similar to database table | Similar to file storage |
+
+---
+
+## 10. Columns
+
+Columns define the type of data stored in Lists or Libraries.
+
+Examples:
+
+* Single Line of Text
+* Multiple Lines of Text
+* Choice
+* Number
+* Date and Time
+* Person or Group
+* Lookup
+* Yes/No
+
+---
+
+## 11. Views
+
+Views control how data is displayed.
+
+Examples:
+
+* All Items
+* Active Requests
+* My Requests
+
+Types:
+
+* Standard View
+* Calendar View
+* Gallery View
+
+---
+
+## 12. Permissions
+
+SharePoint provides role-based security.
+
+Permission Levels:
+
+* Full Control
+* Design
+* Edit
+* Contribute
+* Read
+* View Only
+
+Interview Question:
+Q: How are permissions managed in SharePoint?
+
+Answer:
+Permissions can be assigned at Site, Library, Folder, or Item level using SharePoint groups and permission levels.
+
+---
+
+## 13. Versioning
+
+Versioning maintains history of document changes.
+
+Types:
+
+* Major Version (1.0, 2.0)
+* Minor Version (1.1, 1.2)
+
+Benefits:
+
+* Audit tracking
+* Restore previous versions
+* Compliance support
+
+
+Sharepoint as datasource
+
+# SharePoint as a Data Source for Power Apps – Important Concepts
+
+## 1. SharePoint Lists
+
+A SharePoint List is the most commonly used data source in Power Apps.
+
+It stores structured data in rows and columns, similar to an Excel table or database table.
+
+Example:
+
+Employee List
+
+| Employee ID | Employee Name | Department | Status |
+| ----------- | ------------- | ---------- | ------ |
+| 1001        | Venkat        | IT         | Active |
+
+Interview Question:
+Q: Why did you use SharePoint Lists as a backend?
+
+Answer:
+We used SharePoint Lists because they are easy to configure, integrate seamlessly with Power Apps and Power Automate, provide versioning and security, and are suitable for small to medium business applications.
+
+---
+
+## 2. SharePoint Columns (Very Important)
+
+You should know all commonly used column types.
+
+### Single Line of Text
+
+Stores short text values.
+
+Example:
+Employee Name
+
+### Multiple Lines of Text
+
+Stores long text.
+
+Example:
+Comments
+
+### Choice
+
+Allows users to select predefined values.
+
+Example:
+Status = New, Approved, Rejected
+
+### Number
+
+Stores numeric values.
+
+Example:
+Salary
+
+### Currency
+
+Stores monetary values.
+
+Example:
+Amount
+
+### Date and Time
+
+Stores dates.
+
+Example:
+Request Date
+
+### Yes/No
+
+Stores Boolean values.
+
+Example:
+Is Active
+
+### Person or Group
+
+Stores SharePoint users or groups.
+
+Example:
+Manager
+
+### Lookup
+
+Retrieves values from another list.
+
+Example:
+Department Name from Department List
+
+### Hyperlink
+
+Stores URLs.
+
+### Attachment
+
+Stores files.
+
+Interview Question:
+Q: Which SharePoint column types have you used in your applications?
+
+---
+
+## 3. CRUD Operations
+
+You should know how Power Apps performs CRUD operations.
+
+### Create
+
+```PowerFx
+Patch(
+    EmployeeList,
+    Defaults(EmployeeList),
+    {
+        EmployeeName: txtName.Text,
+        Department: drpDept.Selected.Value
+    }
+)
+```
+
+### Read
+
+```PowerFx
+Filter(EmployeeList, Status="Active")
+```
+
+### Update
+
+```PowerFx
+Patch(
+    EmployeeList,
+    Gallery1.Selected,
+    {
+        Status:"Approved"
+    }
+)
+```
+
+### Delete
+
+```PowerFx
+Remove(EmployeeList, Gallery1.Selected)
+```
+
+---
+
+## 4. Delegation (Most Important)
+
+SharePoint supports only certain delegable functions.
+
+Supported:
+
+* Filter
+* LookUp
+* Sort
+* StartsWith
+
+Non-delegable examples:
+
+* Search (in some scenarios)
+* CountRows
+* Len
+* Mid
+
+Interview Question:
+Q: How did you resolve delegation issues in SharePoint?
+
+Answer:
+I used delegable functions, indexed frequently used columns, filtered data at the source level, and avoided loading large datasets into collections.
+
+---
+
+## 5. SharePoint Threshold Limit
+
+Very Important.
+
+SharePoint List View Threshold = 5000 Items.
+
+When lists exceed 5000 records, performance issues may occur.
+
+How to overcome:
+
+* Create indexed columns.
+* Use delegable queries.
+* Filter records.
+* Archive old data.
+* Use Dataverse for very large datasets.
+
+Interview Question:
+Q: What happens when SharePoint exceeds 5000 items?
+
+---
+
+## 6. Indexed Columns
+
+Indexed columns improve query performance.
+
+Examples:
+
+* Status
+* Department
+* Request ID
+
+Frequently filtered columns should be indexed.
+
+Example:
+
+```PowerFx
+Filter(Requests, Status="Approved")
+```
+
+If Status is indexed, the query performs faster.
+
+---
+
+## 7. SharePoint Permissions
+
+Permission Levels:
+
+* Full Control
+* Edit
+* Contribute
+* Read
+
+You should know:
+
+* Site-level permissions
+* List-level permissions
+* Item-level permissions
+
+Interview Question:
+Q: How did you implement security in Power Apps using SharePoint?
+
+Answer:
+We controlled access using SharePoint permissions and implemented role-based UI visibility within Power Apps.
+
+---
+
+## 8. Versioning
+
+Versioning maintains historical changes.
+
+Benefits:
+
+* Audit tracking
+* Restore previous versions
+* Compliance
+
+Example:
+
+Version 1.0 → Created
+
+Version 2.0 → Modified
+
+---
+
+## 9. Attachments
+
+Power Apps can upload files to SharePoint list attachments.
+
+Common use cases:
+
+* Employee documents
+* Invoices
+* Approval documents
+
+Control Used:
+
+Attachment Control
+
+---
+
+## 10. SharePoint Integration with Power Automate
+
+Common triggers:
+
+* When an item is created
+* When an item is modified
+
+Common actions:
+
+* Create Item
+* Update Item
+* Get Items
+* Get Item
+* Delete Item
+
+Example:
+
+User submits Power Apps form → Item stored in SharePoint → Power Automate sends approval email.
+
+---
+
+## 11. Views
+
+Views display filtered data.
+
+Examples:
+
+* All Requests
+* My Requests
+* Approved Requests
+
+Benefits:
+
+* Improves usability
+* Improves performance
+
+---
+
+## 12. Common Interview Questions
+
+1. Why did you choose SharePoint over Dataverse?
+2. What are SharePoint Lists?
+3. What column types have you used?
+4. What is the 5000-item threshold?
+5. What is delegation?
+6. How did you improve SharePoint performance?
+7. What are indexed columns?
+8. How do you perform CRUD operations?
+9. How do you handle permissions?
+10. How do you upload attachments from Power Apps?
+11. Difference between SharePoint and Dataverse?
+12. What challenges did you face while using SharePoint as a data source?
+13. How do you handle large datasets in SharePoint?
+14. How do you debug SharePoint-related issues in Power Apps?
+15. What is the difference between List and Library?
+
+These are the most important SharePoint concepts for a Power Apps developer using SharePoint as a backend data source.
