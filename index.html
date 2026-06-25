@@ -260,10 +260,6 @@
         top: 20px;
         align-self: start;
       }
-
-      .sidebar.hidden {
-        display: block;
-      }
     }
 
     @media (max-width: 940px) {
@@ -367,11 +363,7 @@
       }
     }
 
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 940) {
-        showSidebar();
-      }
-    });
+    window.addEventListener('resize', updateSidebarState);
 
     function hideSidebar() {
       sidebar.classList.add('hidden');
@@ -493,6 +485,8 @@
           const hashFile = decodeURIComponent(window.location.hash.slice(1));
           if (hashFile && availableFiles.includes(hashFile)) {
             selectFile(hashFile);
+          } else if (!hashFile && availableFiles.length > 0 && window.innerWidth > 940) {
+            selectFile(availableFiles[0]);
           }
         })
         .catch(() => {
