@@ -441,7 +441,7 @@
       contentStatus.textContent = 'Loading answers…';
       qaContent.innerHTML = '';
 
-      fetch(encodeURI(filename))
+      fetch(`${encodeURI(filename)}?t=${Date.now()}`, { cache: 'no-store' })
         .then(response => {
           if (!response.ok) {
             throw new Error('Could not load ' + filename);
@@ -482,7 +482,7 @@
     }
 
     function loadFileList() {
-      fetch('files.json')
+      fetch(`files.json?t=${Date.now()}`, { cache: 'no-store' })
         .then(response => {
           if (!response.ok) {
             throw new Error('Could not load files.json');
