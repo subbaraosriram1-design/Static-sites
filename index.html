@@ -53,6 +53,60 @@
       outline: none;
     }
 
+    .hamburger {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .hamburger::before,
+    .hamburger::after,
+    .hamburger span {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #ffffff;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hamburger::before {
+      transform: translateY(-6px);
+    }
+
+    .hamburger::after {
+      transform: translateY(6px);
+    }
+
+    .close-button {
+      border: none;
+      background: transparent;
+      color: #e2e8f0;
+      font-size: 1.8rem;
+      line-height: 1;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px;
+      border-radius: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .close-button:hover,
+    .close-button:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      outline: none;
+    }
+
     .layout {
       display: grid;
       gap: 24px;
@@ -66,6 +120,10 @@
       border-radius: 28px;
       padding: 28px;
       box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar {
+      position: relative;
     }
 
     .sidebar h1,
@@ -212,6 +270,24 @@
       .sidebar {
         order: -1;
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 20;
+        padding: 32px 28px 28px;
+        border-radius: 0;
+        background: rgba(15, 23, 42, 0.96);
+        overflow-y: auto;
+      }
+
+      .sidebar.hidden {
+        display: none;
+      }
+
+      .sidebar:not(.hidden) {
+        display: block;
       }
     }
 
@@ -235,11 +311,12 @@
 <body>
   <div class="page">
     <div class="toolbar">
-      <button id="toggleFiles" type="button">Show files</button>
+      <button id="toggleFiles" class="hamburger" type="button" aria-label="Open files panel"><span></span></button>
     </div>
 
     <div class="layout">
-      <aside class="sidebar" id="sidebar">
+      <aside class="sidebar hidden" id="sidebar">
+        <button id="closeFiles" class="close-button" type="button" aria-label="Close files">×</button>
         <h1>Q&A Files</h1>
         <p class="intro">Pick a text file to view. Headings beginning with <strong>#</strong> become collapsible
           questions, and the following text is shown as the answer.</p>
@@ -268,17 +345,20 @@
     const qaContent = document.getElementById('qaContent');
     const sidebar = document.getElementById('sidebar');
     const toggleFiles = document.getElementById('toggleFiles');
+    const closeFiles = document.getElementById('closeFiles');
 
     let availableFiles = [];
 
     function showSidebar() {
       sidebar.classList.remove('hidden');
-      toggleFiles.textContent = 'Hide files';
+      toggleFiles.setAttribute('aria-label', 'Hide files panel');
+      toggleFiles.title = 'Hide files panel';
     }
 
     function hideSidebar() {
       sidebar.classList.add('hidden');
-      toggleFiles.textContent = 'Show files';
+      toggleFiles.setAttribute('aria-label', 'Show files panel');
+      toggleFiles.title = 'Show files panel';
     }
 
     toggleFiles.addEventListener('click', () => {
@@ -288,6 +368,8 @@
         hideSidebar();
       }
     });
+
+    closeFiles.addEventListener('click', hideSidebar);
 
     function parseQa(text) {
       const lines = text.replace(/\r/g, '').split('\n');
