@@ -1,0 +1,387 @@
+# Power Apps Model-Driven Apps - Complete Interview Notes
+
+# 1. What is a Model-Driven App?
+
+A Model-Driven App is a type of Power App where the application's UI is automatically generated based on the Dataverse data model.
+
+Interview Answer:
+
+A Model-Driven App is a data-driven application built on Microsoft Dataverse where the user interface is automatically generated based on tables, relationships, forms, views, and business processes.
+
+---
+
+# 2. Why Use Model-Driven Apps?
+
+Advantages:
+
+* Faster development
+* Minimal UI design effort
+* Responsive by default
+* Built-in security
+* Supports complex business processes
+* Rich Dataverse integration
+
+---
+
+# 3. Architecture of Model-Driven Apps
+
+User
+↓
+Model-Driven App
+↓
+Dataverse
+↓
+Tables + Forms + Views + Business Logic
+
+Everything in Model-Driven Apps revolves around Dataverse.
+
+---
+
+# 4. Main Components of Model-Driven Apps
+
+## A. Tables
+
+Tables store business data.
+
+Examples:
+
+* Account
+* Contact
+* Employee
+* Service Request
+
+Tables are mandatory in Model-Driven Apps.
+
+---
+
+## B. Columns
+
+Columns store data within tables.
+
+Examples:
+
+* Name
+* Status
+* Department
+* Amount
+
+Common Column Types:
+
+* Text
+* Number
+* Choice
+* Lookup
+* Date and Time
+* Currency
+* Yes/No
+
+---
+
+## C. Relationships
+
+Relationships connect tables.
+
+Types:
+
+### One-to-Many (1:N)
+
+One Department → Many Employees
+
+### Many-to-One (N:1)
+
+Many Employees → One Department
+
+### Many-to-Many (N:N)
+
+Many Students ↔ Many Courses
+
+Interview Question:
+
+Q: What relationships are supported in Dataverse?
+
+---
+
+## D. Forms
+
+Forms provide the UI for creating and editing records.
+
+Types:
+
+### Main Form
+
+Primary form used for data entry.
+
+### Quick Create Form
+
+Used to create records quickly.
+
+### Quick View Form
+
+Displays related record information.
+
+### Card Form
+
+Used in dashboards and interactive experiences.
+
+Interview Question:
+
+Q: What are the different types of forms?
+
+---
+
+## E. Views
+
+Views display records.
+
+Examples:
+
+* Active Employees
+* My Open Requests
+* Approved Requests
+
+Types:
+
+### System View
+
+Visible to all users.
+
+### Personal View
+
+Created by individual users.
+
+Interview Question:
+
+Q: Difference between System Views and Personal Views?
+
+---
+
+## F. Charts
+
+Used to visualize table data.
+
+Examples:
+
+* Pie Chart
+* Bar Chart
+* Funnel Chart
+
+---
+
+## G. Dashboards
+
+Dashboards display business data visually.
+
+Components:
+
+* Charts
+* Views
+* Lists
+* IFrames
+* Web Resources
+
+Example:
+
+Service Management Dashboard
+
+Interview Question:
+
+Q: What is a Dashboard in Model-Driven Apps?
+
+---
+
+# 5. Business Process Flow (BPF)
+
+Business Process Flow guides users through predefined stages.
+
+Example:
+
+Lead
+↓
+Qualification
+↓
+Approval
+↓
+Completion
+
+Common Stages:
+
+* New
+* Review
+* Approval
+* Closed
+
+Benefits:
+
+* Standardized business process
+* Improved user experience
+
+Interview Question:
+
+Q: What is Business Process Flow?
+
+Answer:
+Business Process Flow guides users through a series of business stages to ensure consistent process execution.
+
+---
+
+# 6. Business Rules
+
+Business Rules apply validations without coding.
+
+Example:
+
+If Amount > 100000
+Set Approval Required = Yes
+
+Capabilities:
+
+* Show Error Message
+* Lock Field
+* Hide Field
+* Set Value
+* Make Field Required
+
+Interview Question:
+
+Q: What are Business Rules?
+
+---
+
+# 7. Security Roles
+
+Security controls user access.
+
+Privileges:
+
+* Create
+* Read
+* Write
+* Delete
+* Append
+* Append To
+* Assign
+* Share
+
+Access Levels:
+
+* User
+* Business Unit
+* Parent Child Business Unit
+* Organization
+
+Interview Question:
+
+Q: How is security implemented in Model-Driven Apps?
+
+---
+
+# 8. Command Bar
+
+Command Bar contains action buttons.
+
+Examples:
+
+* New
+* Edit
+* Delete
+* Approve
+
+Can be customized.
+
+---
+
+# 9. Site Map
+
+Site Map defines navigation.
+
+Example:
+
+Sales
+├── Accounts
+├── Contacts
+└── Opportunities
+
+Components:
+
+* Area
+* Group
+* Subarea
+
+Interview Question:
+
+Q: What is a Site Map?
+
+Answer:
+A Site Map defines the navigation structure of a Model-Driven Application.
+
+---
+
+# 10. Solution Components
+
+Model-Driven Apps are usually developed within Solutions.
+
+Solution Components:
+
+* Tables
+* Forms
+* Views
+* Dashboards
+* Business Rules
+* Flows
+* Apps
+
+---
+
+# 11. Plugins and JavaScript
+
+Advanced customizations can be implemented using:
+
+* JavaScript
+* Plugins
+* PCF Controls
+
+Examples:
+
+* Custom validations
+* Auto calculations
+* Dynamic field behavior
+
+---
+
+# 12. Canvas App vs Model-Driven App
+
+| Feature     | Canvas App           | Model-Driven App    |
+| ----------- | -------------------- | ------------------- |
+| UI Design   | Fully customizable   | Auto-generated      |
+| Data Source | Multiple sources     | Primarily Dataverse |
+| Development | UI-first             | Data-first          |
+| Responsive  | Manual               | Automatic           |
+| Complexity  | Simple to Medium     | Medium to Complex   |
+| Best For    | Custom business apps | Enterprise CRM apps |
+
+Interview Question:
+
+Q: When would you choose a Model-Driven App over a Canvas App?
+
+Answer:
+I would choose a Model-Driven App when the application requires complex relational data, role-based security, standardized business processes, and is heavily dependent on Dataverse.
+
+---
+
+# 13. Common Interview Questions
+
+1. What is a Model-Driven App?
+2. How is a Model-Driven App different from a Canvas App?
+3. Why is Dataverse mandatory for Model-Driven Apps?
+4. What are Forms in Model-Driven Apps?
+5. What are Views?
+6. What is a Business Process Flow?
+7. What are Business Rules?
+8. What is a Dashboard?
+9. What is a Site Map?
+10. How do Security Roles work?
+11. What are the different relationship types?
+12. What are solution components?
+13. Explain the architecture of a Model-Driven App.
+14. What is the Command Bar?
+15. What are plugins and when would you use them?

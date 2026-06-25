@@ -1,0 +1,11 @@
+# What is this page for?
+This page displays questions and answers from a text file.
+
+# How do I write questions?
+Start each question on its own line with a leading "#".
+
+# How are answers formatted?
+Add answer text directly after the question. Blank lines separate different Q&A entries.
+
+# Can I add more questions?
+Yes. Add more entries to this file and refresh the page.

@@ -1,80 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sample Static Web Page</title>
+  <title>Q&A Sidebar Demo</title>
   <style>
+    :root {
+      color-scheme: dark;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #3b82f6, #9333ea);
-      color: #ffffff;
+      color: #f8fafc;
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      text-align: center;
+      padding: 20px;
     }
-    .container {
-      max-width: 700px;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.2);
+
+    .page {
+      width: min(1200px, 100%);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(248, 250, 252, 0.12);
       border-radius: 24px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(12px);
+      padding: 20px;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      backdrop-filter: blur(16px);
     }
-    h1 {
-      margin-bottom: 16px;
-      font-size: clamp(2.5rem, 4vw, 4rem);
+
+    .sidebar h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #f8fafc;
     }
-    p {
-      margin: 0 auto 24px;
-      max-width: 520px;
-      line-height: 1.75;
-      font-size: 1.1rem;
+
+    .question-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
     }
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
+
+    .question-list li {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
     }
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: 999px;
-      text-decoration: none;
-      color: #111827;
-      background: #fbbf24;
-      font-weight: 700;
-      transition: transform 0.2s ease, filter 0.2s ease;
+
+    .question-list button {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: #e2e8f0;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.96rem;
+      cursor: pointer;
+      border-radius: 16px;
+      transition: background 0.2s ease;
     }
-    a.button:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
+
+    .question-list button:hover,
+    .question-list button:focus-visible {
+      background: rgba(251, 191, 36, 0.18);
+      outline: none;
     }
-    footer {
-      margin-top: 32px;
-      color: rgba(255, 255, 255, 0.75);
+
+    .content {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .qa-item {
+      margin-bottom: 32px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .qa-item h3 {
+      margin: 0 0 14px;
+      font-size: 1.4rem;
+      color: #f8fafc;
+    }
+
+    .qa-item p {
+      margin: 0;
+      line-height: 1.8;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+    }
+
+    .status {
+      margin: 0 0 22px;
+      color: #e2e8f0;
       font-size: 0.95rem;
     }
 
+    .file-buttons {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .file-button {
+      border: none;
+      padding: 16px 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      font-size: 1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .file-button:hover,
+    .file-button:focus-visible {
+      background: rgba(251, 191, 36, 0.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .qa-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .back-button {
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8fafc;
+      padding: 10px 16px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .back-button:hover,
+    .back-button:focus-visible {
+      background: rgba(251, 191, 36, 0.18);
+      outline: none;
+    }
+
+    .qa-view.hidden {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+
+      .toggle-sidebar {
+        display: block;
+      }
+
+      .sidebar.hidden {
+        display: none;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Welcome to Your Sample Static Site</h1>
-    <p>This is a simple static HTML page you can use to host on a free platform. It works on GitHub Pages, Netlify, or any static host.</p>
-    <div class="button-group">
-      <a class="button" href="#features">Explore</a>
-      <a class="button" href="#host">Host Free</a>
-    </div>
-    <footer>
-      <p>Created for a quick static web page demo.</p>
-    </footer>
+  <button class="toggle-sidebar">Questions</button>
+  <div class="page">
+    <aside class="sidebar" id="sidebar">
+      <h2>Questions</h2>
+      <p class="status" id="status">Loading questions…</p>
+      <ul class="question-list" id="questionList"></ul>
+    </aside>
+
+    <main class="content">
+      <h1>Questions & Answers</h1>
+      <p class="status" id="fileStatus">Loading text files…</p>
+      <div id="fileButtons" class="file-buttons"></div>
+      <div class="qa-view hidden" id="qaView">
+        <div class="qa-header">
+          <div>
+            <p class="status" id="selectedFileName"></p>
+            <p class="status" id="contentStatus">Loading answers…</p>
+          </div>
+          <button class="back-button" id="backButton" type="button">Back to files</button>
+        </div>
+        <div id="qaContent"></div>
+      </div>
+    </main>
   </div>
+
+  <script>
+    const questionList = document.getElementById('questionList');
+    const qaContent = document.getElementById('qaContent');
+    const status = document.getElementById('status');
+    const contentStatus = document.getElementById('contentStatus');
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.querySelector('.toggle-sidebar');
+    const fileStatus = document.getElementById('fileStatus');
+    const fileButtons = document.getElementById('fileButtons');
+    const qaView = document.getElementById('qaView');
+    const selectedFileName = document.getElementById('selectedFileName');
+    const backButton = document.getElementById('backButton');
+
+    let availableFiles = [];
+
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+
+    backButton.addEventListener('click', () => {
+      showFileList();
+      history.pushState(null, '', window.location.pathname);
+    });
+
+    function createId(text) {
+      return text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+
+    function parseQa(text) {
+      const lines = text.replace(/\r/g, '').split('\n');
+      const entries = [];
+      let current = null;
+
+      lines.forEach(line => {
+        if (line.trim().startsWith('#')) {
+          if (current) {
+            entries.push(current);
+          }
+          current = {
+            question: line.replace(/^#+\s*/, '').trim() || 'Untitled question',
+            answer: ''
+          };
+        } else if (current) {
+          current.answer += (current.answer ? '\n' : '') + line;
+        }
+      });
+
+      if (current) {
+        entries.push(current);
+      }
+      return entries;
+    }
+
+    function renderEntries(entries) {
+      if (!entries.length) {
+        status.textContent = '';
+        contentStatus.textContent = 'No questions found in the file. Add entries starting with #.';
+        questionList.innerHTML = '';
+        qaContent.innerHTML = '';
+        return;
+      }
+
+      status.textContent = '';
+      contentStatus.textContent = '';
+      questionList.innerHTML = '';
+      qaContent.innerHTML = '';
+
+      entries.forEach(entry => {
+        const id = createId(entry.question);
+
+        const li = document.createElement('li');
+        const button = document.createElement('button');
+        button.textContent = entry.question;
+        button.type = 'button';
+        button.addEventListener('click', () => {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.innerWidth <= 900) {
+            sidebar.classList.add('hidden');
+          }
+        });
+        li.appendChild(button);
+        questionList.appendChild(li);
+
+        const section = document.createElement('section');
+        section.className = 'qa-item';
+        section.id = id;
+        const heading = document.createElement('h3');
+        heading.textContent = entry.question;
+        const paragraph = document.createElement('p');
+        paragraph.textContent = entry.answer.trim() || 'No answer provided yet.';
+        section.appendChild(heading);
+        section.appendChild(paragraph);
+        qaContent.appendChild(section);
+      });
+    }
+
+    function renderFileButtons(files) {
+      fileButtons.innerHTML = '';
+      if (!files.length) {
+        fileStatus.textContent = 'No text files available.';
+        return;
+      }
+
+      fileStatus.textContent = 'Select a text file to view its Q&A.';
+      files.forEach(file => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = file;
+        button.className = 'file-button';
+        button.addEventListener('click', () => {
+          loadQaFile(file);
+          history.pushState(null, '', `#${encodeURIComponent(file)}`);
+        });
+        fileButtons.appendChild(button);
+      });
+    }
+
+    function showFileList() {
+      qaView.classList.add('hidden');
+      fileButtons.style.display = 'grid';
+      selectedFileName.textContent = '';
+      status.textContent = 'Select a text file to view its Q&A.';
+      contentStatus.textContent = '';
+    }
+
+    function showQaView(filename) {
+      qaView.classList.remove('hidden');
+      fileButtons.style.display = 'none';
+      selectedFileName.textContent = `Showing: ${filename}`;
+      status.textContent = '';
+    }
+
+    function loadQaFile(filename) {
+      showQaView(filename);
+      contentStatus.textContent = 'Loading answers…';
+      questionList.innerHTML = '';
+      qaContent.innerHTML = '';
+      status.textContent = '';
+
+      fetch(encodeURI(filename))
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Could not load ' + filename);
+          }
+          return response.text();
+        })
+        .then(text => {
+          const entries = parseQa(text);
+          renderEntries(entries);
+          if (!entries.length) {
+            contentStatus.textContent = 'No questions found. Use # for questions.';
+          } else {
+            contentStatus.textContent = '';
+          }
+        })
+        .catch(() => {
+          status.textContent = 'Unable to load file: ' + filename;
+          contentStatus.textContent = 'Make sure the file exists and is accessible.';
+        });
+    }
+
+    function loadFileList() {
+      fetch('files.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Could not load files.json');
+          }
+          return response.json();
+        })
+        .then(files => {
+          availableFiles = Array.isArray(files) ? files : [];
+          renderFileButtons(availableFiles);
+          const hashFile = decodeURIComponent(window.location.hash.slice(1));
+          if (hashFile && availableFiles.includes(hashFile)) {
+            loadQaFile(hashFile);
+          }
+        })
+        .catch(() => {
+          fileStatus.textContent = 'Unable to load files.json. Add a files.json listing all .txt files.';
+        });
+    }
+
+    window.addEventListener('popstate', () => {
+      const hashFile = decodeURIComponent(window.location.hash.slice(1));
+      if (hashFile && availableFiles.includes(hashFile)) {
+        loadQaFile(hashFile);
+      } else {
+        showFileList();
+      }
+    });
+
+    loadFileList();
+  </script>
+
+  renderEntries(entries);
+  })
+  .catch(() => {
+  status.textContent = 'Unable to load questions. Make sure qa.txt exists in the same folder.';
+  contentStatus.textContent = 'Add a file named qa.txt with questions starting with #.';
+  });
+  </script>
 </body>
+
 </html>
